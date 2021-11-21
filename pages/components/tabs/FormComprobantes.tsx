@@ -1,16 +1,12 @@
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 
 export default function FormComprobantes() {
-    
-    return (
-    <Box
-        sx={{
-          width: '50%',
-          height: 400,
-          backgroundColor: '#bb6bc9'
-        }}>
+  return (
+    <div>
+      <Paper elevation={3}>
         <p>Formulario comprobantes</p>
-      </Box>);
+      </Paper>
+    </div>
+  );
 }
