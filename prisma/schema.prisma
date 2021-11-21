@@ -6,17 +6,30 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model Comprobantes {
-  id              Int     @id @default(autoincrement())
-  comprobante     String  @unique
+model Pagos {
+  id              Int          @id @default(autoincrement())
+  comprobante     Comprobante? @relation(fields: [comprobanteId], references: [id], map: "Pagos_comprobanteId_fkey")
+  comprobanteId   Int
   usa_CFDI        String?
   forma_de_pago   String?
   num_parcialidad Int
   saldo_anterior  Int
   importe_pagado  Int
   saldo_insoluto  Int
+}
+
+model Comprobante {
+  id                     Int      @id @default(autoincrement())
+  fecha                  DateTime
+  fecha_qn               String
+  cuenta_bancaria_nombre String?  @db.VarChar(255)
+  concepto               String?  @db.VarChar(255)
+  referecia              String?  @db.VarChar(255)
+  pago_relacionado       Pagos?    
+  monto                  Int?
 }
