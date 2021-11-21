@@ -10,3 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Comprobantes {
+  id              Int     @id @default(autoincrement())
+  comprobante     String  @unique
+  usa_CFDI        String?
+  forma_de_pago   String?
+  num_parcialidad Int
+  saldo_anterior  Int
+  importe_pagado  Int
+  saldo_insoluto  Int
+}
