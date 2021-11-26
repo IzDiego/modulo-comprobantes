@@ -8,6 +8,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 
 export default function FormComprobantes() {
   const [comprobante, setComprobante] = React.useState("id, fecha, total");
@@ -67,7 +68,28 @@ export default function FormComprobantes() {
               />
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
+            <FormControl component="fieldset">
+              <RadioGroup
+                row
+                aria-label="factura"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="si"
+                  control={<Radio />}
+                  label="Requiere factura"
+                />
+                <FormControlLabel
+                  value="no"
+                  control={<Radio />}
+                  label="No requiere factura"
+                />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={3}>
             <FormControl sx={{ width: "100%" }}>
               <InputLabel id="uso-CFDI">Uso de CFDI</InputLabel>
               <Select
@@ -87,11 +109,9 @@ export default function FormComprobantes() {
               <FormHelperText>Elige el que necesites</FormHelperText>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <FormControl sx={{ width: "100%" }} id="forma-pago">
-              <InputLabel>
-                Forma de Pago
-              </InputLabel>
+              <InputLabel>Forma de Pago</InputLabel>
               <Select
                 value={formaPago}
                 label="Forma de Pago"

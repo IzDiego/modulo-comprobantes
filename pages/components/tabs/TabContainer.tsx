@@ -1,12 +1,18 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import FormComprobantes from './FormComprobantes';
+import * as React from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import FormComprobantes from "./FormComprobantes";
+import { Button } from "@mui/material";
 
-function TabPanel(props: { [x: string]: any; children: any; value: any; index: any; }) {
+function TabPanel(props: {
+  [x: string]: any;
+  children: any;
+  value: any;
+  index: any;
+}) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -19,7 +25,7 @@ function TabPanel(props: { [x: string]: any; children: any; value: any; index: a
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={'span'}>{children}</Typography>
+          <Typography component={"span"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -35,7 +41,7 @@ TabPanel.propTypes = {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -47,9 +53,13 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
           <Tab label="Información del pago" {...a11yProps(0)} />
           <Tab label="Comprobantes relacionados" {...a11yProps(1)} />
           <Tab label="Ajustes" {...a11yProps(2)} />
@@ -60,7 +70,13 @@ export default function BasicTabs() {
         Item 1
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FormComprobantes/>
+        <Button variant="contained" component="span"
+          onClick={() => {
+            return (<FormComprobantes />);
+          }}
+        >
+          Agregar Comprobante
+        </Button>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item 3
