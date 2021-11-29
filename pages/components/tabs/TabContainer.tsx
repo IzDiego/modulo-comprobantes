@@ -1,11 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import FormComprobantes from "./FormComprobantes";
-import { Button } from "@mui/material";
+import { Button, Box, Typography, Tab, Tabs } from "@mui/material";
 
 function TabPanel(props: {
   [x: string]: any;
